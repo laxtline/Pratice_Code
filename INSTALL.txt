@@ -1,0 +1,20 @@
+LOCAL CODE COMPILER — WINDOWS APP
+
+Run Local-Code-Compiler-Setup.exe, choose the install folder, and click Install.
+Default location: %LOCALAPPDATA%\Programs\LocalCodeCompiler
+The app and all bundled program/runtime files are installed in this folder.
+No administrator rights are needed for this default per-user installation.
+
+Start the app from Start Menu or the Desktop shortcut.
+Your source files are saved in the workspace folder inside the installation.
+The installer can copy code from the workspace beside the Setup EXE when found.
+It never overwrites existing saved files during an upgrade.
+
+Uninstall from Windows Settings > Apps > Installed apps > Local Code Compiler,
+or use the Uninstall shortcut in Start Menu. Saved workspace and data are kept.
+
+Python and SQL work offline, and HTML/CSS has a live preview. Other languages
+need their corresponding local runtime (for example Node.js for JavaScript).
+Microsoft Edge WebView2 and .NET Framework are used by the native app window.
+
+All code executes with your Windows account's permissions. Keep this app local.

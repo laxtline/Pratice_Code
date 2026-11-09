@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.laxtline</groupId>
+  <artifactId>pratice-code-editor-windows</artifactId>
+  <version>1.2.0</version>
+  <packaging>exe</packaging>
+  <name>Local Code Compiler Windows Installer</name>
+  <description>Offline Windows installer for Local Code Compiler, with bundled Python and editor assets.</description>
+  <url>https://github.com/laxtline/Pratice_Code</url>
+  <scm>
+    <url>https://github.com/laxtline/Pratice_Code</url>
+    <connection>scm:git:https://github.com/laxtline/Pratice_Code.git</connection>
+  </scm>
+</project>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1f2023">
+  <title>Python Online Compiler — Local</title>
+  <link rel="icon" href="/assets/python.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/fonts.css">
+  <link rel="stylesheet" href="/vendor/codemirror.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/workspace.css">
+  <script src="/vendor/codemirror.js" defer></script>
+  <script src="/vendor/python.js" defer></script>
+  <script src="/vendor/javascript.js" defer></script>
+  <script src="/vendor/xml.js" defer></script>
+  <script src="/vendor/css.js" defer></script>
+  <script src="/vendor/htmlmixed.js" defer></script>
+  <script src="/vendor/clike.js" defer></script>
+  <script src="/vendor/sql.js" defer></script>
+  <script src="/vendor/r.js" defer></script>
+  <script src="/vendor/go.js" defer></script>
+  <script src="/vendor/rust.js" defer></script>
+  <script src="/vendor/dart.js" defer></script>
+  <script src="/vendor/ruby.js" defer></script>
+  <script src="/vendor/php.js" defer></script>
+  <script src="/vendor/swift.js" defer></script>
+  <script src="/vendor/matchbrackets.js" defer></script>
+  <script src="/vendor/closebrackets.js" defer></script>
+  <script src="/vendor/active-line.js" defer></script>
+  <script src="/vendor/comment.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 20h16"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 0 1 11.2 3 9 9 0 1 0 21 12.8Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 4m0 3v.1"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </defs></svg>
+  <main class="workspace" aria-label="Local Python compiler">
+    <nav class="language-rail" aria-label="Programming languages"></nav>
+    <section class="panels" id="panels">
+      <section class="editor-pane" aria-label="Code editor">
+        <div class="editor-toolbar toolbar">
+          <button class="icon-button mobile-nav" id="nav-button" aria-label="Programming languages"><svg><use href="#i-menu"/></svg></button>
+          <button class="file-tab active" id="code-tab" aria-selected="true">main.py</button>
+          <span class="save-status" id="save-status" title="Files are saved in D:\Coding\programiz-local\workspace">Saved locally</span>
+          <button class="file-tab mobile-output" id="mobile-output-tab" aria-selected="false">Output</button>
+          <div class="editor-actions">
+            <button class="visualize-button" id="visualize" title="Step through your Python code">Visualize</button>
+            <button class="run-button" id="run" title="Run code (Ctrl+Enter)"><span>Run</span><svg><use href="#i-play"/></svg></button>
+            <button class="icon-button mobile-more" aria-label="More options"><svg><use href="#i-more"/></svg></button>
+          </div>
+        </div>
+        <div class="editor-host"><textarea id="source" aria-label="Python code editor" spellcheck="false"></textarea></div>
+      </section>
+      <div class="splitter" id="splitter" role="separator" aria-label="Resize editor and output" aria-orientation="vertical" tabindex="0" aria-valuemin="25" aria-valuemax="75" aria-valuenow="50"><span>⠿</span></div>
+      <section class="output-pane" aria-label="Program output">
+        <div class="output-toolbar toolbar">
+          <div class="output-tabs"><button class="output-tab selected" id="output-tab">Output</button><button class="output-tab" id="preview-tab" hidden>Preview</button><button class="output-tab" id="trace-tab" hidden>Visualizer</button></div>
+          <div class="output-actions">
+            <button class="icon-button" id="clear-output" aria-label="Clear output" title="Clear output"><svg><use href="#i-trash"/></svg></button>
+            <button class="icon-button share-button" id="share" aria-label="Share code" title="Share code"><svg><use href="#i-share"/></svg></button>
+            <button class="icon-button desktop-more" aria-label="More options" title="More options"><svg><use href="#i-more"/></svg></button>
+          </div>
+        </div>
+        <iframe id="html-preview" title="Live HTML preview" sandbox="allow-scripts allow-modals" hidden></iframe>
+        <div class="terminal" id="terminal" tabindex="0" aria-label="Python terminal" title="Click Output, then Ctrl+= / Ctrl+- / Ctrl+0 to zoom only its text">
+          <pre id="output" aria-live="polite" aria-label="Execution output"></pre><form id="input-form" hidden><label class="sr-only" for="stdin">Program input</label><input id="stdin" autocomplete="off" spellcheck="false" aria-label="Program input"><button type="submit" title="Send input">↵</button></form>
+          <div class="input-hint" id="input-hint" hidden>Enter input above, then press Enter <span>Ctrl+D sends EOF</span></div>
+        </div>
+        <section class="trace-panel" id="trace-panel" aria-label="Python execution visualizer" hidden>
+          <div class="trace-controls"><button class="icon-button" id="first-step" title="First step">|‹</button><button class="icon-button" id="prev-step" aria-label="Previous step"><svg><use href="#i-left"/></svg></button><button class="icon-button" id="play-trace" aria-label="Play visualization"><svg><use href="#i-play"/></svg></button><button class="icon-button" id="next-step" aria-label="Next step"><svg><use href="#i-right"/></svg></button><button class="icon-button" id="last-step" title="Last step">›|</button><span id="step-label">Recording execution…</span></div>
+          <input id="step-range" type="range" min="0" max="0" value="0" aria-label="Execution step">
+          <div class="trace-content"><div class="trace-heading"><span class="blue-dot"></span><span id="trace-line">Python execution</span></div><div id="trace-frames"></div><div class="trace-note" id="trace-note"></div><h3 class="trace-output-label">Output at this step</h3><pre id="trace-output"></pre></div>
+        </section>
+      </section>
+    </section>
+  </main>
+  <div class="overflow-menu" id="options-menu" role="menu" hidden>
+    <button role="menuitem" data-action="fullscreen"><svg><use href="#i-expand"/></svg><span>Full screen</span><kbd>F11</kbd></button>
+    <button role="menuitem" data-action="download"><svg><use href="#i-download"/></svg><span>Download</span></button>
+    <button role="menuitem" data-action="save"><svg><use href="#i-download"/></svg><span>Save local file</span><kbd>Ctrl+S</kbd></button>
+    <button role="menuitem" data-action="upload"><svg><use href="#i-upload"/></svg><span>Open code file</span></button>
+    <button role="menuitem" data-action="theme"><svg><use href="#i-sun"/></svg><span id="theme-label">Light mode</span></button>
+    <div class="menu-divider"></div>
+    <div class="font-size-control"><span>Editor font size</span><button id="font-down" aria-label="Decrease font size">−</button><span id="font-size">14</span><button id="font-up" aria-label="Increase font size">+</button></div>
+    <button role="menuitem" data-action="reset"><svg><use href="#i-trash"/></svg><span>Reset code</span></button>
+    <button role="menuitem" data-action="help"><svg><use href="#i-help"/></svg><span>Help & shortcuts</span></button>
+  </div>
+  <input type="file" accept=".py,.R,.r,.sql,.html,.htm,.java,.kt,.c,.cpp,.cs,.js,.ts,.go,.rs,.scala,.dart,.rb,.php,.swift,.txt" id="file-input" hidden>
+  <dialog id="share-dialog"><form method="dialog" class="dialog-title"><h2>Share your code</h2><button class="icon-button" aria-label="Close"><svg><use href="#i-close"/></svg></button></form><p>Anyone using this computer can open this saved copy.</p><div class="share-field"><input id="share-url" readonly aria-label="Share link"><button id="copy-link" class="primary-button">Copy Link</button></div><p class="muted">Local links work while this server is running. Changes to the editor do not change a saved copy.</p></dialog>
+  <dialog id="help-dialog"><form method="dialog" class="dialog-title"><h2>Local code compiler</h2><button class="icon-button" aria-label="Close"><svg><use href="#i-close"/></svg></button></form><p>Select a language in the left rail. All languages open in this tab. Each language has its own starter code and a separate file saved automatically in <strong>D:\Coding\programiz-local\workspace</strong>.</p><p>Select <strong>Run</strong> for program output. HTML/CSS has an automatic live preview. Python's <strong>Visualize</strong> lets you inspect lines, variables and function calls. Languages without an installed runtime can still be edited, saved and downloaded; Run explains the missing compiler.</p><div class="shortcut"><span>Run / stop code</span><kbd>Ctrl + Enter</kbd></div><div class="shortcut"><span>Save local file</span><kbd>Ctrl + S</kbd></div><div class="shortcut"><span>Toggle comment</span><kbd>Ctrl + /</kbd></div><div class="shortcut"><span>Output text zoom (click Output first)</span><kbd>Ctrl + = / − / 0</kbd></div><p class="muted">Long editor and output lines scroll horizontally. Explicit line breaks are preserved. Output font size is saved separately from the editor.</p><p class="muted" id="runtime-info"></p><p class="muted">Programs run as your Windows user with local file and network access. This is a personal local tool. The server listens only on this computer. Runs stop after 20 seconds of execution; Python input can wait for 10 minutes.</p><p class="muted">Independent local recreation of the Programiz compiler interface. The top logo/title/PRO panel is removed so the workspace uses the entire page.</p></dialog>
+  <div id="toast" role="status" hidden></div>
+</body>
+</html>
